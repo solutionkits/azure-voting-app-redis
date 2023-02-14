@@ -58,6 +58,7 @@ spec:
       containers:
       - name: azure-vote-front
         image: acret1.azurecr.io/azure-vote-front:v1
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
         resources:
@@ -68,6 +69,8 @@ spec:
         env:
         - name: REDIS
           value: "azure-vote-back"
+      imagePullSecrets:
+        - name: acr-secret
 ---
 apiVersion: v1
 kind: Service
